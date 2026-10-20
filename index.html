@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#f6f3ec">
+  <title>日常以外 — somewhere, in my life</title>
+  <style>
+    :root {
+      --paper: #f6f3ec;
+      --ink: #292b25;
+      --muted: #88877b;
+      --line: #dedbd1;
+      --accent: #71806b;
+      --card: #fffdf8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans TC", sans-serif;
+      line-height: 1.9;
+    }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { max-width: 760px; margin: auto; padding: 28px 24px 70px; }
+    header { display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid var(--line); padding-bottom: 22px; }
+    .brand { font-family: Georgia, serif; font-size: 22px; letter-spacing: -.7px; }
+    .eyebrow { color: var(--muted); font-size: 11px; letter-spacing: 2px; }
+    .intro { padding: 65px 0 45px; }
+    h1 { font-family: Georgia, "Noto Serif TC", serif; font-weight: 400;
+      font-size: clamp(34px, 7vw, 55px); line-height: 1.35; margin: 12px 0; }
+    .intro p { color: #77766c; max-width: 430px; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn { border: 1px solid var(--line); background: transparent; color: var(--ink);
+      padding: 9px 15px; border-radius: 3px; font-size: 13px; }
+    .btn.primary { background: var(--ink); color: white; border-color: var(--ink); }
+    .btn:hover { opacity: .75; }
+    .section-head { display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 10px; }
+    .entry { padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .entry-date { color: var(--muted); font-size: 11px; letter-spacing: 1.3px; }
+    .entry h2 { font-family: Georgia, "Noto Serif TC", serif; font-weight: 400;
+      font-size: 25px; margin: 7px 0; line-height: 1.5; }
+    .entry p { white-space: pre-wrap; overflow-wrap: anywhere; color: #5d5c53; }
+    .mood { color: var(--accent); font-size: 12px; }
+    .entry-tools { display: flex; gap: 8px; margin-top: 12px; }
+    .small { border: 0; background: none; color: var(--muted); padding: 4px 0;
+      margin-right: 12px; font-size: 12px; }
+    .small:hover { color: var(--ink); }
+    .editor { background: var(--card); border: 1px solid var(--line);
+      padding: 24px; margin: 20px 0; }
+    label { display: block; font-size: 12px; color: var(--muted); margin: 14px 0 5px; }
+    input, textarea, select { width: 100%; background: transparent; color: var(--ink);
+      border: 1px solid var(--line); padding: 11px; border-radius: 2px; }
+    textarea { min-height: 220px; resize: vertical; line-height: 1.9; }
+    .hidden { display: none !important; }
+    .empty { color: var(--muted); padding: 35px 0; font-size: 14px; }
+    .notice { color: var(--muted); font-size: 12px; margin-top: 22px; }
+    footer { border-top: 1px solid var(--line); margin-top: 65px; padding-top: 20px;
+      display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; }
+    @media(max-width: 480px) {
+      .wrap { padding: 20px 18px 45px; }
+      .intro { padding: 48px 0 32px; }
+      .editor { padding: 16px; }
+      header { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="brand">日常以外.</div>
+      <div class="eyebrow">SOMEWHERE, IN MY LIFE</div>
+    </div>
+    <div class="eyebrow" id="today"></div>
+  </header>
+
+  <main>
+    <section class="intro" id="intro">
+      <div class="eyebrow">A LITTLE RECORD OF BEING ALIVE</div>
+      <h1>生活沒有答案，<br>但值得記下來。</h1>
+      <p>一些日常，一點情緒，還有那些不想忘記的微小瞬間。這裡沒有觀眾席，只有生活本身。</p>
+      <div class="actions">
+        <button class="btn primary" id="newBtn">＋ 寫下今天</button>
+        <button class="btn" id="exportBtn">備份日記 ↓</button>
+      </div>
+    </section>
+
+    <section id="editor" class="editor hidden">
+      <div class="eyebrow" id="editorLabel">A NEW PAGE</div>
+      <form id="diaryForm">
+        <input type="hidden" id="entryId">
+        <label for="date">日期</label>
+        <input id="date" type="date" required>
+        <label for="title">今天的標題</label>
+        <input id="title" maxlength="120" placeholder="今天沒有什麼特別的事。" required>
+        <label for="mood">此刻的心情</label>
+        <select id="mood">
+          <option value="">不特別定義</option>
+          <option>平靜</option><option>快樂</option><option>疲倦</option>
+          <option>有點難過</option><option>期待</option><option>感謝</option>
+          <option>迷惘</option>
+        </select>
+        <label for="body">寫下今天發生的事……</label>
+        <textarea id="body" maxlength="20000"
+          placeholder="今天的風很舒服。&#10;&#10;回家的路上，我突然想起……"></textarea>
+        <div class="actions" style="margin-top:16px">
+          <button class="btn primary" type="submit">保存這一頁</button>
+          <button class="btn" type="button" id="cancelBtn">取消</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="sharedView" class="hidden">
+      <div class="section-head">
+        <span class="eyebrow">A PAGE SHARED WITH YOU</span>
+        <button class="small" id="homeBtn">回到日記首頁 ↗</button>
+      </div>
+      <div id="sharedEntry"></div>
+      <p class="notice">這是一篇透過連結分享的日記。你可以閱讀，不需要註冊或追蹤。</p>
+    </section>
+
+    <section id="journal">
+      <div class="section-head">
+        <span class="eyebrow">THE JOURNAL</span>
+        <span class="eyebrow" id="count">0 PAGES</span>
+      </div>
+      <div id="entries"></div>
+    </section>
+
+    <p class="notice" id="privacyNote">
+      你的日記預設只保存在這台裝置的瀏覽器中。要讓別人閱讀，請使用每篇日記的分享連結。
+      清除瀏覽器資料可能會刪除日記，請定期備份。
+    </p>
+  </main>
+  <footer>
+    <span>JUST WORDS. JUST LIFE.</span>
+    <span>MADE FOR QUIET DAYS © <span id="year"></span></span>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const KEY = "somewhere-diary-v1";
+  const today = new Date();
+  const localDate = d => {
+    const x = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+    return x.toISOString().slice(0, 10);
+  };
+  $("today").textContent = localDate(today).replaceAll("-", " / ");
+  $("year").textContent = today.getFullYear();
+
+  let entries = [];
+  try { entries = JSON.parse(localStorage.getItem(KEY) || "[]"); }
+  catch { entries = []; }
+
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  }[c]));
+
+  const prettyDate = date => {
+    const d = new Date(date + "T12:00:00");
+    return d.toLocaleDateString("zh-TW", {
+      year: "numeric", month: "long", day: "numeric", weekday: "long"
+    });
+  };
+
+  function save() {
+    localStorage.setItem(KEY, JSON.stringify(entries));
+    render();
+  }
+
+  function render() {
+    $("count").textContent = `${entries.length} PAGES`;
+    if (!entries.length) {
+      $("entries").innerHTML =
+        '<div class="empty">第一篇日記，從今天開始。<br>不必寫得很好，只要寫得真實。</div>';
+      return;
+    }
+    $("entries").innerHTML = [...entries]
+      .sort((a,b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id))
+      .map(e => `
+        <article class="entry">
+          <div class="entry-date">${esc(prettyDate(e.date))}</div>
+          <h2>${esc(e.title)}</h2>
+          ${e.mood ? `<div class="mood">— ${esc(e.mood)}</div>` : ""}
+          ${e.body ? `<p>${esc(e.body)}</p>` : ""}
+          <div class="entry-tools">
+            <button class="small" data-share="${esc(e.id)}">分享這一頁 ↗</button>
+            <button class="small" data-edit="${esc(e.id)}">編輯</button>
+            <button class="small" data-delete="${esc(e.id)}">刪除</button>
+          </div>
+        </article>`).join("");
+  }
+
+  function openEditor(entry) {
+    $("editor").classList.remove("hidden");
+    $("editorLabel").textContent = entry ? "EDIT THIS PAGE" : "A NEW PAGE";
+    $("entryId").value = entry?.id || "";
+    $("date").value = entry?.date || localDate(new Date());
+    $("title").value = entry?.title || "";
+    $("mood").value = entry?.mood || "";
+    $("body").value = entry?.body || "";
+    $("editor").scrollIntoView({behavior:"smooth", block:"start"});
+    $("title").focus();
+  }
+
+  $("newBtn").addEventListener("click", () => openEditor());
+  $("cancelBtn").addEventListener("click", () => $("editor").classList.add("hidden"));
+
+  $("diaryForm").addEventListener("submit", event => {
+    event.preventDefault();
+    const oldId = $("entryId").value;
+    const entry = {
+      id: oldId || (Date.now().toString(36) + Math.random().toString(36).slice(2,7)),
+      date: $("date").value,
+      title: $("title").value.trim(),
+      mood: $("mood").value,
+      body: $("body").value.trim()
+    };
+    if (!entry.title) return;
+    if (oldId) entries = entries.map(e => e.id === oldId ? entry : e);
+    else entries.push(entry);
+    save();
+    $("editor").classList.add("hidden");
+  });
+
+  $("entries").addEventListener("click", async event => {
+    const b = event.target.closest("button");
+    if (!b) return;
+    const id = b.dataset.edit || b.dataset.delete || b.dataset.share;
+    const entry = entries.find(e => e.id === id);
+    if (!entry) return;
+
+    if (b.dataset.edit) openEditor(entry);
+    if (b.dataset.delete && confirm("確定要刪除這篇日記嗎？這個動作無法復原。")) {
+      entries = entries.filter(e => e.id !== id);
+      save();
+    }
+    if (b.dataset.share) {
+      // 單篇內容放在 URL fragment，不會隨一般 HTTP 請求送到伺服器。
+      const bytes = new TextEncoder().encode(JSON.stringify(entry));
+      let binary = "";
+      bytes.forEach(byte => binary += String.fromCharCode(byte));
+      const encoded = btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+      const url = location.href.split("#")[0] + "#read=" + encoded;
+      try {
+        await navigator.clipboard.writeText(url);
+        alert("分享連結已複製！傳給想分享的人即可。");
+      } catch {
+        prompt("複製以下日記分享連結：", url);
+      }
+    }
+  });
+
+  $("exportBtn").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(entries, null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "my-diary-backup.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  function showSharedEntry() {
+    const match = location.hash.match(/^#read=([A-Za-z0-9_-]+)$/);
+    if (!match) return false;
+    try {
+      const encoded = match[1].replace(/-/g, "+").replace(/_/g, "/");
+      const binary = atob(encoded);
+      const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+      const e = JSON.parse(new TextDecoder().decode(bytes));
+      if (!e || typeof e.title !== "string" || typeof e.date !== "string") throw Error();
+      $("intro").classList.add("hidden");
+      $("editor").classList.add("hidden");
+      $("journal").classList.add("hidden");
+      $("privacyNote").classList.add("hidden");
+      $("sharedView").classList.remove("hidden");
+      $("sharedEntry").innerHTML = `
+        <article class="entry">
+          <div class="entry-date">${esc(prettyDate(e.date))}</div>
+          <h1 style="font-size:clamp(30px,6vw,43px)">${esc(e.title)}</h1>
+          ${e.mood ? `<div class="mood">— ${esc(e.mood)}</div>` : ""}
+          <p style="white-space:pre-wrap;overflow-wrap:anywhere;margin-top:24px">${esc(e.body || "")}</p>
+        </article>`;
+      return true;
+    } catch {
+      $("sharedEntry").textContent = "這個分享連結無法讀取，可能已損壞。";
+      $("sharedView").classList.remove("hidden");
+      $("journal").classList.add("hidden");
+      return true;
+    }
+  }
+
+  $("homeBtn").addEventListener("click", () => {
+    location.hash = "";
+    location.reload();
+  });
+
+  if (!showSharedEntry()) render();
+})();
+</script>
+</body>
+</html>
