@@ -1,22 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f3ec">
+  <meta name="theme-color" content="#f8f5ee">
   <meta name="description" content="一些日常，一點情緒，還有那些不想忘記的微小瞬間。">
   <title>日常以外 — Somewhere, in my life</title>
 
   <style>
     :root {
-      --paper: #f6f3ec;
-      --ink: #292b25;
-      --muted: #88877b;
-      --line: #dedbd1;
-      --accent: #71806b;
-      --card: #fffdf8;
-      --soft-green: #e9e9df;
+      /* 秋天大地色調 (Autumn Warm Earth Tones) */
+      --paper: #f8f5ee;        /* 溫暖奶油米白紙色 */
+      --ink: #2b231d;          /* 深焙咖啡黑褐 */
+      --muted: #8c7a6b;        /* 枯葉暖灰褐 */
+      --line: #e3dacd;         /* 暖燕麥色分割線 */
+      --accent: #8c4025;       /* 楓葉赤赭紅 */
+      --accent-warm: #c88b48;  /* 琥珀金棕 */
+      --card: #fffdf9;         /* 暖白卡片背景 */
+      --soft-warm: #f0e8dc;    /* 溫暖秋日底色 */
     }
 
     * { box-sizing: border-box; }
@@ -35,15 +36,12 @@
       line-height: 1.9;
     }
 
-    button, input, textarea { font: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
     a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; }
 
     .wrap {
-      max-width: 850px;
+      max-width: 750px;
       margin: auto;
-      padding: 25px 25px 55px;
+      padding: 30px 25px 65px;
     }
 
     /* Header */
@@ -54,7 +52,7 @@
       justify-content: space-between;
       gap: 15px;
       border-bottom: 1px solid var(--line);
-      padding-bottom: 19px;
+      padding-bottom: 20px;
     }
 
     .brand {
@@ -62,6 +60,7 @@
       font-size: 24px;
       letter-spacing: -.6px;
       line-height: 1.4;
+      color: var(--accent);
     }
 
     .eyebrow {
@@ -76,173 +75,30 @@
       font-size: 11px;
     }
 
-    /* Hero */
+    /* Intro / Hero */
 
     .intro {
-      padding: 49px 0 28px;
+      padding: 45px 0 35px;
     }
 
     h1, h2, h3 {
       font-family: Georgia, "Noto Serif TC", serif;
       font-weight: 400;
+      color: var(--ink);
     }
 
     .intro h1 {
-      font-size: clamp(35px, 7vw, 54px);
+      font-size: clamp(32px, 6vw, 48px);
       line-height: 1.4;
-      margin: 13px 0;
+      margin: 12px 0;
+      color: var(--accent);
     }
 
     .intro p {
-      color: #77766c;
-      max-width: 470px;
+      color: var(--muted);
+      max-width: 500px;
       font-size: 14px;
     }
-
-    .button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 17px;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      background: transparent;
-      color: var(--ink);
-      font-size: 13px;
-      transition: .2s;
-    }
-
-    .button:hover { opacity: .75; }
-
-    .button-dark {
-      color: white;
-      background: var(--ink);
-      border-color: var(--ink);
-    }
-
-    /* Prominent Say Hello section */
-
-    .hello {
-      position: relative;
-      overflow: hidden;
-      margin: 10px 0 55px;
-      padding: 29px;
-      background: var(--soft-green);
-      border: 1px solid #dcded1;
-      border-radius: 4px;
-    }
-
-    .hello::after {
-      content: "HELLO";
-      position: absolute;
-      right: -5px;
-      top: -33px;
-      font-family: Georgia, serif;
-      font-size: clamp(70px, 14vw, 125px);
-      color: rgba(113, 128, 107, .08);
-      pointer-events: none;
-      line-height: 1.5;
-    }
-
-    .hello-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hello-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .hello h2 {
-      font-size: clamp(25px, 5vw, 34px);
-      line-height: 1.45;
-      margin: 8px 0;
-    }
-
-    .hello-desc {
-      color: #66685d;
-      font-size: 13px;
-      max-width: 480px;
-      margin: 7px 0 20px;
-    }
-
-    .hello-icon {
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      width: 45px;
-      height: 45px;
-      border: 1px solid #cdd1c3;
-      border-radius: 50%;
-      font-size: 21px;
-    }
-
-    .hello-form {
-      display: grid;
-      gap: 11px;
-    }
-
-    .hello-form input,
-    .hello-form textarea {
-      width: 100%;
-      padding: 12px 14px;
-      color: var(--ink);
-      background: rgba(255, 253, 248, .8);
-      border: 1px solid #d8d9ce;
-      border-radius: 3px;
-      outline: none;
-      font-size: 13px;
-    }
-
-    .hello-form input:focus,
-    .hello-form textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(113, 128, 107, .1);
-    }
-
-    .hello-form textarea {
-      min-height: 95px;
-      resize: vertical;
-    }
-
-    .hello-form input::placeholder,
-    .hello-form textarea::placeholder {
-      color: #99998d;
-    }
-
-    .hello-submit {
-      width: 100%;
-      padding: 12px 18px;
-      border: 0;
-      border-radius: 3px;
-      background: var(--ink);
-      color: white;
-      font-size: 13px;
-      transition: opacity .2s;
-    }
-
-    .hello-submit:hover { opacity: .8; }
-
-    .hello-note {
-      color: #7c7d71;
-      font-size: 11px;
-      margin: 11px 0 0;
-    }
-
-    .form-status {
-      display: none;
-      padding: 12px;
-      background: rgba(255, 253, 248, .8);
-      color: #53664e;
-      font-size: 13px;
-      overflow-wrap: anywhere;
-    }
-
-    .form-status.show { display: block; }
 
     /* Journal */
 
@@ -253,72 +109,62 @@
       gap: 10px;
       border-bottom: 1px solid var(--line);
       padding-bottom: 12px;
-      margin-bottom: 12px;
+      margin-bottom: 25px;
     }
 
     .stories {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 25px;
+      grid-template-columns: 1fr;
     }
 
     .story {
-      padding: 17px 0 25px;
-      min-width: 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .story-image {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      background: #e7e2d8;
+      padding: 30px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(140, 64, 37, 0.04);
     }
 
     .story-date {
-      margin-top: 13px;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 1.2px;
+      color: var(--accent-warm);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
     }
 
     .story h3 {
-      font-size: 23px;
+      font-size: 26px;
       line-height: 1.5;
-      margin: 5px 0;
+      margin: 8px 0 16px;
+      color: var(--ink);
     }
 
     .story-mood {
       color: var(--accent);
-      font-size: 12px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      font-style: italic;
     }
 
     .story-text {
       white-space: pre-wrap;
       overflow-wrap: anywhere;
-      color: #68675e;
-      font-size: 13px;
-    }
-
-    .empty {
-      grid-column: 1 / -1;
-      padding: 30px 0;
-      color: var(--muted);
-      font-size: 13px;
+      color: #4a423a;
+      font-size: 15px;
+      line-height: 2;
     }
 
     /* About and footer */
 
     .about {
-      padding: 28px 0;
-      margin-top: 40px;
+      padding: 35px 0 10px;
+      margin-top: 50px;
       border-top: 1px solid var(--line);
     }
 
     .about p {
-      max-width: 500px;
-      color: #77766c;
+      max-width: 520px;
+      color: var(--muted);
       font-size: 13px;
     }
 
@@ -327,8 +173,8 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 32px;
-      padding-top: 18px;
+      margin-top: 40px;
+      padding-top: 20px;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 10px;
@@ -336,11 +182,10 @@
     }
 
     @media (max-width: 560px) {
-      .wrap { padding: 19px 17px 38px; }
-      .intro { padding: 38px 0 22px; }
-      .hello { padding: 21px 17px; margin-bottom: 43px; }
-      .stories { grid-template-columns: 1fr; }
-      .story h3 { font-size: 25px; }
+      .wrap { padding: 20px 18px 40px; }
+      .intro { padding: 30px 0 20px; }
+      .story { padding: 20px; }
+      .story h3 { font-size: 22px; }
       .header-right { font-size: 10px; }
     }
   </style>
@@ -352,11 +197,10 @@
   <header>
     <a href="#" class="brand">
       日常以外.
-      <div class="eyebrow">SOMEWHERE, IN MY LIFE</div>
+      <div class="eyebrow">AUTUMN LEAVES, IN MY LIFE</div>
     </a>
     <div class="header-right">
       <div id="today"></div>
-      <a href="#hello">SAY HELLO ↗</a>
     </div>
   </header>
 
@@ -366,125 +210,47 @@
       <div class="eyebrow">A LITTLE RECORD OF BEING ALIVE</div>
       <h1>生活沒有答案，<br>但值得記下來。</h1>
       <p>
-        一些日常，一點情緒，還有那些不想忘記的微小瞬間。
-        這裡沒有觀眾席，只有生活本身。
+        微風，微小的碎片，還有那些不想忘記的日常細節。
       </p>
-      <a class="button button-dark" href="#journal">
-        閱讀我的生活 ↓
-      </a>
     </section>
 
-    <!-- 醒目的打招呼區域 -->
-    <section class="hello" id="hello">
-      <div class="hello-content">
-        <div class="hello-top">
-          <div>
-            <div class="eyebrow">A LITTLE NOTE FROM YOU</div>
-            <h2>路過的你，<br>來打個招呼吧。</h2>
-          </div>
-          <div class="hello-icon">☁</div>
-        </div>
-
-        <p class="hello-desc">
-          很高興你來到這裡。無論是想分享一句話，
-          或只是留個足跡，都歡迎你。
-        </p>
-
-        <form class="hello-form" id="helloForm">
-          <input
-            id="nickname"
-            type="text"
-            maxlength="40"
-            placeholder="怎麼稱呼你？（暱稱）"
-            aria-label="你的暱稱"
-            required
-          >
-
-          <textarea
-            id="message"
-            maxlength="1000"
-            placeholder="嗨，今天第一次來到這裡……"
-            aria-label="想說的話"
-            required
-          ></textarea>
-
-          <button class="hello-submit" type="submit">
-            Say Hello　↗
-          </button>
-        </form>
-
-        <p class="hello-note">
-          留下一點文字，讓這次相遇有個小小的記號。
-        </p>
-
-        <div class="form-status" id="formStatus" role="status"></div>
-      </div>
-    </section>
-
-    <!-- 你的生活文章：直接在 HTML 更新 -->
+    <!-- 日記文章（僅顯示 10/26 一篇） -->
     <section id="journal">
       <div class="section-head">
         <span class="eyebrow">THE JOURNAL</span>
-        <span class="eyebrow">LITTLE MOMENTS</span>
+        <span class="eyebrow">AUTUMN DAY</span>
       </div>
 
       <div class="stories">
-
-        <!-- 文章 1：將圖片網址、標題、日期及內文換成自己的 -->
         <article class="story">
-          <img
-            class="story-image"
-            src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1000&q=85"
-            alt="陽光灑落的風景"
-            loading="lazy"
-          >
-          <div class="story-date">2026 / 10 / 20</div>
-          <h3>把日子過得慢一點。</h3>
-          <div class="story-mood">— 平靜</div>
-          <p class="story-text">最近開始覺得，生活不一定要有什麼特別的答案。
+          <div class="story-date">2026 / 10 / 26</div>
+          <h3>起司醬、過期日與黏手的把手。</h3>
+          <div class="story-mood">— 隨機應變的日常</div>
+          <p class="story-text">中午拿了一層起司醬夾心的手撕麵包，配着 BelGioioso Mascarpone 爽爽地吃完。
 
-有時候只是好好吃一頓飯，看看窗外的天空，就已經很好了。
+結果順手把包裝丟掉時，隨眼看了一下……才發現兩個居然都在 10/17 就到期了。算了，反正肚子目前沒什麼反應。
 
-希望自己可以一直保有感受小事的能力。</p>
+後來去 Get Grocery 補貨，在 Chocolate milk 和 Lactose free（好像是 Lactaid Calcium Enriched？）之間猶豫了一下，最後還是選了前者。
+
+騎車出來的時候，感覺腳踏車右把手因為長期日曬，變得黏黏臭臭的，有點受不了。路上還有人順口跟我提醒說後胎該打氣了。
+
+當下心裡又萌生了是不是該換一台電動 Scooter 的念頭……但想想，還是隨機應變吧。</p>
         </article>
-
-        <!-- 文章 2 -->
-        <article class="story">
-          <img
-            class="story-image"
-            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=85"
-            alt="午後咖啡館"
-            loading="lazy"
-          >
-          <div class="story-date">2026 / 10 / 16</div>
-          <h3>一個人的午後。</h3>
-          <div class="story-mood">— 慢慢生活</div>
-          <p class="story-text">找了一間喜歡的咖啡館，點一杯咖啡，坐在窗邊。
-
-沒有特別要完成的事情，也沒有一定要抵達的地方。
-
-偶爾這樣就很好。</p>
-        </article>
-
-        <!-- 複製上面的 article 區塊，就能新增更多文章 -->
-
       </div>
     </section>
 
     <section class="about">
-      <div class="eyebrow">A LITTLE ABOUT THIS PLACE</div>
+      <div class="eyebrow">ABOUT THIS PLACE</div>
       <h2>關於這裡。</h2>
       <p>
-        這是我的一個小小角落，記錄生活、風景、心情，
+        這是我的一個小小角落，記錄生活、微風、心情，
         還有那些當下覺得平凡，後來卻不想忘記的事。
-        謝謝你來看看。
       </p>
-      <a class="button" href="#hello">也跟我打個招呼 ↗</a>
     </section>
   </main>
 
   <footer>
-    <span>JUST WORDS. JUST LIFE.</span>
+    <span>JUST WORDS. JUST AUTUMN.</span>
     <span>MADE FOR QUIET DAYS © <span id="year"></span></span>
   </footer>
 
@@ -503,57 +269,6 @@
 
     document.getElementById("year").textContent =
       now.getFullYear();
-
-    /*
-      純 HTML 版本：
-      表單會開啟訪客裝置的電子郵件程式。
-      請將下面的信箱換成你自己的電子郵件地址。
-    */
-    const OWNER_EMAIL = "YOUR_EMAIL@example.com";
-
-    const form = document.getElementById("helloForm");
-    const status = document.getElementById("formStatus");
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const nickname = document.getElementById("nickname")
-        .value.trim();
-      const message = document.getElementById("message")
-        .value.trim();
-
-      if (!nickname || !message) {
-        status.textContent = "請填寫暱稱和想說的話。";
-        status.classList.add("show");
-        return;
-      }
-
-      if (OWNER_EMAIL === "YOUR_EMAIL@example.com") {
-        status.textContent =
-          "留言介面已就緒！請先在 HTML 中將 OWNER_EMAIL 換成你的電子郵件地址，才能接收訪客的招呼。";
-        status.classList.add("show");
-        return;
-      }
-
-      const subject = encodeURIComponent(
-        "日常以外｜收到一則訪客招呼"
-      );
-
-      const body = encodeURIComponent(
-        "來自日常以外網站的訪客留言\n\n" +
-        "暱稱：" + nickname + "\n\n" +
-        "留言內容：\n" + message
-      );
-
-      status.textContent =
-        "正在開啟電子郵件程式，請在郵件中確認並送出留言。";
-      status.classList.add("show");
-
-      window.location.href =
-        "mailto:" + OWNER_EMAIL +
-        "?subject=" + subject +
-        "&body=" + body;
-    });
   })();
 </script>
 </body>
