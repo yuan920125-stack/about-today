@@ -3,9 +3,8 @@ window.DIARIES = [
   {
     id: "2026-10-26",
     date: "2026-10-26",
-    title: "過期的午餐，與生活的小插曲",
-    excerpt: "A little lunch surprise, a grocery run, and a bicycle that needed some attention.",
     image: "images/2026-10-26.png",
+    // image: "",
     imageAlt: "October 26 diary illustration",
     paragraphs: [
       "At noon, I grabbed some pull-apart bread with a layer of cheese sauce in the middle, paired it with BelGioioso Mascarpone, and ate the whole thing with absolutely no restraint.",
