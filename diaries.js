@@ -7,10 +7,10 @@ window.DIARIES = [
     image: "images/2026-11-2.png",
     paragraphs: [
       "At the bus stop at Stevens Creek and Bandley, I met a Taiwanese student from De Anza who grew up in Shanghai. He was taking Bus 51, but for some reason, he had walked all the way over to that stop.",
-      "Red leaves are everywhere these days. I spotted a tree in someone's yard that looked like a pomelo tree, absolutely loaded with fruit.",
-      "Daylight saving time quietly came to an end, and we're back to standard time. The house I used to live in is now fenced off, probably getting ready for demolition or renovation. Hopefully, the new design will be worth the wait.",
-      "I always find myself looking up whenever a flock of starlings flies by, and airplane lights are much easier to spot when the sky starts getting dim.",
-      "Still not sure whether to line up for some bookstore merch or go on a picnic this Saturday. I've also been curious about the flea market and should maybe check it out."
+      "Red leaves are everywhere these days. One tree is now covered in diya-shaped LED lights for Diwali. Another in someone's yard that looked like a pomelo tree, absolutely loaded with fruit.",
+      "Daylight saving time quietly came to an end, and we're back to standard time. The house I used to live in is now fenced off, probably getting ready for demolition or renovation. Looking forward to seeing the new design.",
+      "I always find myself looking up whenever a flock of starlings flies by. As the sky gets dim, the lights draw my attention to the plane up ahead, which reminds me of the tragedy in Florida. I can't help but hope everyone makes it home safely.",
+      "Still not sure whether to line up for some bookstore merch or go on a picnic this Saturday. I should also check out the flea market. Speaking of which, looks like @samlinmusic was playing pickleball at Memorial Park yesterday."
     ]
   },
   {
