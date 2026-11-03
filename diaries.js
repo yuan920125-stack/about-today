@@ -2,8 +2,8 @@
 window.DIARIES = [
   {
     id: "2026-11-2",
-    date: "2026-11-2",
-    image: "images/2026-11-2.jpg",
+    date: "2026-11-02",
+    image: "images/2026-11-2.png",
     paragraphs: [
       "At the bus stop at Stevens Creek and Bandley, I met a Taiwanese student from De Anza who grew up in Shanghai. He was taking Bus 51, but for some reason, he had walked all the way over to that stop.",
       "Red leaves are everywhere these days. I spotted a tree in someone's yard that looked like a pomelo tree, absolutely loaded with fruit.",
