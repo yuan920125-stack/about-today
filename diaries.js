@@ -3,6 +3,7 @@ window.DIARIES = [
   {
     id: "2026-11-2",
     date: "2026-11-02",
+    title: "frost's descent",
     image: "images/2026-11-2.png",
     paragraphs: [
       "At the bus stop at Stevens Creek and Bandley, I met a Taiwanese student from De Anza who grew up in Shanghai. He was taking Bus 51, but for some reason, he had walked all the way over to that stop.",
@@ -15,6 +16,7 @@ window.DIARIES = [
   {
     id: "2026-10-26",
     date: "2026-10-26",
+    title: "cold dew",
     image: "images/2026-10-26.png",
     // image: "",
     imageAlt: "October 26 diary illustration",
